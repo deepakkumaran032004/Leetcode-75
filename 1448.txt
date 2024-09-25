@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int res=0;
+    void traversal(TreeNode* root,int max_v){
+        if(root){
+            if(root->val>=max_v)
+                res+=1;
+            max_v=max(max_v,root->val);
+            traversal(root->right,max_v);
+            traversal(root->left,max_v);
+        }
+    }
+    int goodNodes(TreeNode* root) {
+        traversal(root,root->val);
+        return res;   
+    }
+};
